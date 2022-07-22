@@ -28,18 +28,6 @@ variable "autoscale" {
   description = "Autocale enabled of Elastic deployment"
 }
 
-variable "helm_chart_repository" {
-  type = string
-  default = "https://prometheus-community.github.io/helm-charts"
-  description = "Helm Chart repository"
-}
-
-variable "elasticsearch_exporter_chart_version" {
-  type        = string
-  description = "The version of the elasticsearch-exporter chart in the Helm repository."
-  default     = "4.13.0"
-}
-
 variable "ec_api_key" {
   type        = string
   sensitive   = true
