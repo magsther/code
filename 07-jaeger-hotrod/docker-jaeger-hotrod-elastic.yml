@@ -90,7 +90,7 @@ services:
     networks:
       - elastic-jaeger
     depends_on:
-      - jaeger
+      - jaeger-agent
 
 volumes:
   esdata:
