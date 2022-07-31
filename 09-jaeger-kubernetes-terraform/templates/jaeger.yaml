@@ -3,19 +3,19 @@ kind: Jaeger
 metadata:
   name: my-jaeger
 spec:
-  strategy: allInOne # <1>
+  strategy: allInOne
   allInOne:
-    image: jaegertracing/all-in-one:latest # <2>
-    options: # <3>
-      log-level: debug # <4>
+    image: jaegertracing/all-in-one:latest
+    options:
+      log-level: debug
   storage:
-    type: memory # <5>
-    options: # <6>
-      memory: # <7>
+    type: memory
+    options:
+      memory:
         max-traces: 100000
   ingress:
-    enabled: false # <8>
+    enabled: false
   agent:
-    strategy: agent # <9>
+    strategy: agent
   annotations:
-    scheduler.alpha.kubernetes.io/critical-pod: "" # <10>
+    scheduler.alpha.kubernetes.io/critical-pod:
