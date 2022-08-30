@@ -1,0 +1,38 @@
+name: 'Terraform'
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
+        
+    # Runs a single command using the runners shell
+    - name: 'Terraform init'
+      id: init
+      run: |
+        terraform init          
+    - name: 'Terraform plan'
+      id: plan
+      run: |
+        terraform plan
+                    
+    - name: 'Terraform apply'
+      id: apply
+      run: |
+          terraform apply -auto-approve          
